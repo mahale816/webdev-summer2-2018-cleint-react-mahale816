@@ -89,22 +89,27 @@ export default class ModuleList extends React.Component {
             <Router>
                 <div className="row">
                     <div className="col-4">
-                        <div className="input-group">
-                            <input placeholder="New Module"
-                                   defaultValue={this.state.module.title}
-                                   onChange={this.setModuleTitle}/>
+                        <div>
+                            <div className="input-group">
+                                <input placeholder="New Module"
+                                       defaultValue={this.state.module.title}
+                                       onChange={this.setModuleTitle}/>
+                                <button onClick={this.createModule}
+                                        className="btn btn-primary float-right">
+                                    Add
+                                </button>
+                            </div>
+                            {/*<div className="input-group-append float-right">*/}
+                               {/**/}
+                            {/*</div>*/}
                         </div>
-                        <div className="input-group-append">
-                            <button onClick={this.createModule}
-                                    className="btn btn-primary">
-                                Add
-                            </button>
-                        </div>
+                        <br/>
+                        <br/>
                         <div>
                             {this.renderModules()}
                         </div>
                     </div>
-                    <div>
+                    <div className="col-8">
                         <Route path = "/course/:courseId/module/:moduleId"
                                component={ModuleEditor}/>
                     </div>

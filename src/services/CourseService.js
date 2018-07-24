@@ -1,5 +1,6 @@
+const COURSE_API_URL = 'https://cryptic-ridge-94740.herokuapp.com/api/course';
+
 let _singleton = Symbol();
-const COURSE_API_URL = 'http://localhost:8080/api/course';
 class CourseService {
 
     constructor(singletonToken) {
