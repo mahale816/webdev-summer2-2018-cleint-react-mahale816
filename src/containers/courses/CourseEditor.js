@@ -23,7 +23,7 @@ export default class CourseEditor extends React.Component {
   render() {
     return(
       <div>
-        <nav className="navbar navbar-light bg-dark">
+        <nav className="navbar navbar-dark bg-dark">
           <div className="navbar-brand">
             <h2>Course Editor</h2>
           </div>
