@@ -1,5 +1,5 @@
-const API_URL_TOPIC = "http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic";
-const API_URL = "http://localhost:8080/api/";
+const API_URL_TOPIC = "https://cryptic-ridge-94740.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic";
+const API_URL = "https://cryptic-ridge-94740.herokuapp.com/api/";
 
 let _singleton = Symbol();
 export default class TopicService {

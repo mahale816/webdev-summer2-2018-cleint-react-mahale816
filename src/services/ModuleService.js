@@ -1,6 +1,6 @@
-const MODULE_API_URL = 'http://localhost:8080/api/course/CID/module';
-const MODULE_API_URL_MODULE = 'http://localhost:8080/api/module/MODULE_ID';
-const API_URL = 'http://localhost:8080/api/';
+const MODULE_API_URL = 'https://cryptic-ridge-94740.herokuapp.com/api/course/CID/module';
+const MODULE_API_URL_MODULE = 'https://cryptic-ridge-94740.herokuapp.com/api/module/MODULE_ID';
+const API_URL = 'https://cryptic-ridge-94740.herokuapp.com/api/';
 
 let _singleton = Symbol();
 export default class ModuleService {

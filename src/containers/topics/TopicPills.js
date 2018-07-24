@@ -130,8 +130,8 @@ export default class TopicPills extends React.Component {
     render(){
         return(
             <div>
-                <button className="fa fa-plus"
-                        onClick={this.createTopic}>
+                <button className="float-right"
+                        onClick={this.createTopic}>Add Topic
                 </button>
                 <div>
                     {this.renderTopics()}

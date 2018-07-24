@@ -41,6 +41,7 @@ class ModuleEditor extends React.Component{
                 <h4>Lessons</h4>
                 <LessonTabs courseId = {this.state.courseId}
                             moduleId ={this.state.moduleId}/>
+                <hr/>
             </div>
         )
     }

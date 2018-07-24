@@ -1,5 +1,5 @@
-const API_URL_LESSON = "http://localhost:8080/api/course/CID/module/MID/lesson";
-const API_URL = "http://localhost:8080/api";
+const API_URL_LESSON = "https://cryptic-ridge-94740.herokuapp.com/api/course/CID/module/MID/lesson";
+const API_URL = "https://cryptic-ridge-94740.herokuapp.com/api";
 
 let _singleton = Symbol();
 export default class LessonService {

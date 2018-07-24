@@ -50,6 +50,7 @@ class LessonEditor extends React.Component{
     render() {
         return (
             <div>
+                <hr/>
                 <h4>Topics</h4>
                 <TopicPills courseId={this.state.courseId}
                         moduleId={this.state.moduleId}

@@ -23,7 +23,11 @@ export default class CourseEditor extends React.Component {
   render() {
     return(
       <div>
-        <h2>Course Editor</h2>
+        <nav className="navbar navbar-dark bg-dark">
+          <div className="navbar-brand">
+            <h2>Course Editor</h2>
+          </div>
+        </nav>
           <h3>{this.state.course.title}</h3>
           <div className="container-fluid">
             <ModuleList courseId={this.props.match.params.courseId}/>
