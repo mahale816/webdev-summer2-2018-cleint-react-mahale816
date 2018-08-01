@@ -1,6 +1,10 @@
 import React from 'react';
 import TopicService from '../../services/TopicService';
 import TopicPillItem from '../../components/TopicPillItem';
+import LessonEditor from "../lessons/LessonEditor";
+import TestCase from '../../components/TestCase';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import TopicEditor from "./TopicEditor";
 
 export default class TopicPills extends React.Component {
     constructor(props) {
@@ -136,10 +140,11 @@ export default class TopicPills extends React.Component {
                 <div>
                     {this.renderTopics()}
                 </div>
+                <hr/>
+                <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
+                       component={TopicEditor}/>
             </div>
-
         )
     }
-
 }
 

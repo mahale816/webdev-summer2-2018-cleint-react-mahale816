@@ -5,6 +5,7 @@ import LessonTabItem from '../../components/LessonTabItem';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import LessonEditor from '../../containers/lessons/LessonEditor';
 
+
 export default class LessonTabs extends React.Component {
     constructor(props) {
         super(props);
