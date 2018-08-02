@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import WidgetContainer from '../../components/widget'
-import '../../Style1.css';
+import '../../Style.css';
 
 class WidgetListComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {topicId: ''};
         this.selectTopic = this.selectTopic.bind(this);
-        this.saveToServer = this.saveToServer.bind(this);
+        this.saveW = this.saveW.bind(this);
     }
 
     componentDidMount() {
@@ -26,27 +26,32 @@ class WidgetListComponent extends Component {
         this.setState({topicId: topicId});
     }
 
-    saveToServer(){
+    saveW(){
 
         this.props.save(this.state.topicId);
     }
     render() {
         return(
-            <html>
-            <body>
-            <div className="container pt-5">
+            <div>
+            <div className="container pt-1">
                 <div className="row flex-row-reverse pr-2 pb-3">
                     <div className="d-flex float-right my-auto">
-
-                        <label className="switch m-auto">
+                        <label>Preview</label><hr/>
+                        <label className="m-auto" id="cm-style">
                             <input type="checkbox" onClick={this.props.preview}/>
-                            <span className="slider round"/>
+                            <span className="round" id="cm-toggle"/>
                         </label>
                     </div>
                     <div className="d-flex pr-2">
                         <button className="btn btn-success m-auto" hidden={this.props.previewMode}
-                                onClick={this.saveToServer}>
+                                onClick={this.saveW}>
                             Save
+                        </button>
+                    </div>
+                    <div className="d-flex pr-3">
+                        <button className="btn btn-secondary" onClick={this.props.addWidget}
+                                hidden={this.props.previewMode}>
+                            Add Widget
                         </button>
                     </div>
                 </div>
@@ -59,19 +64,7 @@ class WidgetListComponent extends Component {
                                      widgetLength={this.props.widgets.length}/>
                 ))}
             </div>
-
-            <div className="container pt-1">
-                <div className="row flex-row-reverse pr-2 pb-3">
-                    <div className="row flex-row-reverse pr-2 pb-3">
-                        <button className="btn btn-danger" onClick={this.props.addWidget}
-                                hidden={this.props.previewMode}>
-                            <i className="fa fa-plus-square"/>
-                        </button>
-                    </div>
-                </div>
             </div>
-            </body>
-            </html>
         )
     }
 }
