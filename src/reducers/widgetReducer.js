@@ -77,7 +77,6 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     widgets: state.widgets.map(widget => {
                         if (widget.id === action.id) {
                             widget.text = action.text
-
                         }
 
                         return Object.assign({}, widget);
@@ -87,7 +86,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                 };
             return JSON.parse(JSON.stringify(newState9));
 
-        case constants.LINK_DISP_CHANGED:
+        case constants.LINK_DISPLAY_CHANGED:
             let newState10=
                 {
 
@@ -260,7 +259,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
         case constants.SAVE:
 
 
-            fetch('http://localhost:8080/api/topic/'+action.topicId+"/widgets", {
+            fetch('https://cryptic-ridge-94740.herokuapp.com/api/topic/'+action.topicId+"/widgets", {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
@@ -269,11 +268,6 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
 
 
             return state;
-
-        // case constants.FIND_ALL_WIDGETS:
-        // newState = Object.assign({}, state)
-        // newState.widgets = action.widgets
-        // return newState
 
         case constants.FIND_ALL_WIDGETS_FOR_TOPIC:
             newState = Object.assign({}, state);
@@ -293,9 +287,9 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     ...state.widgets,
                     {
                         id: state.widgets.length + 1,
-                        text: 'New Widget',
-                        name: 'Widget Name',
-                        widgetType: 'Paragraph',
+                        text: '',
+                        name: '',
+                        widgetType: 'Heading',
                         size: '2',
                         listType: 'ordered',
                         widgetOrder: state.widgets.length + 1

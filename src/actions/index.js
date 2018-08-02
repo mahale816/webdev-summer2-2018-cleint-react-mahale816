@@ -76,7 +76,7 @@ export const linkTextChanged = (dispatch,widgetId,linkText) =>(
 
 export const linkDispChanged = (dispatch,widgetId,linkDispText) =>(
     dispatch({
-        type : constants.LINK_DISP_CHANGED,
+        type : constants.LINK_DISPLAY_CHANGED,
         id: widgetId,
         linkName: linkDispText
     })

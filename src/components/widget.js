@@ -5,12 +5,11 @@ import * as actions from '../actions'
 import * as constants from '../constants'
 
 const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headingNameChanged}) => {
-    let selectElem;
-    let inputElem;
-
-    let nameElem;
-    return <html>
-    <body>
+    let elementHolder;
+    let inputHolder;
+    let nameHolder;
+    return (
+    <div>
     <div className="container widget-container"
          style={widgetContainerStyle}>
         <div className="col-md-12">
@@ -19,9 +18,9 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
                     <div className="col-md-12">
                         <div className="form-group">
                             <label>Heading Text</label>
-                            <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
+                            <input onChange={() => headingTextChanged(widget.id, inputHolder.value)}
                                    value={widget.text}
-                                   ref={node => inputElem = node}
+                                   ref={node => inputHolder = node}
                                    className="form-control"/>
                         </div>
                     </div>
@@ -30,9 +29,9 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
                     <div className="col-md-12">
                         <div className="form-group">
                             <label>Heading Size</label>
-                            <select onChange={() => headingSizeChanged(widget.id, selectElem.value)}
+                            <select onChange={() => headingSizeChanged(widget.id, elementHolder.value)}
                                     value={widget.size}
-                                    ref={node => selectElem = node} className="form-control">
+                                    ref={node => elementHolder = node} className="form-control">
                                 <option value="1">Heading 1</option>
                                 <option value="2">Heading 2</option>
                                 <option value="3">Heading 3</option>
@@ -44,9 +43,9 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
                     <div className="col-md-12">
                         <div className="form-group">
                             <label>Heading Title</label>
-                            <input onChange={() => headingNameChanged(widget.id, nameElem.value)}
+                            <input onChange={() => headingNameChanged(widget.id, nameHolder.value)}
                                    value={widget.name}
-                                   ref={node => nameElem = node} className="form-control"/>
+                                   ref={node => nameHolder = node} className="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -69,8 +68,8 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
             </div>
         </div>
     </div>
-    </body>
-    </html>
+    </div>
+)
 };
 const dispatchToPropsMapper = dispatch => ({
     headingTextChanged: (widgetId, newText) =>
@@ -86,11 +85,10 @@ const stateToPropsMapper = state => ({
 const HeadingContainer = connect(stateToPropsMapper, dispatchToPropsMapper)(Heading);
 
 const Paragraph = ({widget, preview, paraTextChanged, paraNameChanged}) => {
-    let inputElem;
-    let nameElem;
+    let inputHolder;
+    let nameHolder;
     return(
-        <html>
-        <body>
+        <div>
         <div className="container widget-container"
              style={widgetContainerStyle}>
             <div className="col-md-12">
@@ -98,19 +96,21 @@ const Paragraph = ({widget, preview, paraTextChanged, paraNameChanged}) => {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-        <textarea onChange={() => paraTextChanged(widget.id, inputElem.value)}
-                  ref={node => inputElem= node}
-                  value={widget.text} className="form-control">
-    </textarea> <br/>
+                                <label>Paragraph Text</label>
+                                <textarea onChange={() => paraTextChanged(widget.id, inputHolder.value)}
+                                          ref={node => inputHolder= node}
+                                            value={widget.text} className="form-control">
+                                </textarea>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <input onChange={() => paraNameChanged(widget.id, nameElem.value)}
+                                <label>Paragraph Name</label>
+                                <input onChange={() => paraNameChanged(widget.id, nameHolder.value)}
                                        value={widget.name}
-                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                                       ref={node => nameHolder = node} className="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -128,8 +128,7 @@ const Paragraph = ({widget, preview, paraTextChanged, paraNameChanged}) => {
                 </div>
             </div>
         </div>
-        </body>
-        </html>
+        </div>
     )
 };
 
@@ -148,8 +147,8 @@ const stateToPropsMapperPara = state => ({
 const ParaContainer = connect(stateToPropsMapperPara,dispatchToPropsMapperPara)(Paragraph);
 
 const Image = ({widget, preview, imageTextChanged, imageNameChanged}) => {
-    let inputElem3;
-    let nameElem;
+    let inputHolder3;
+    let nameHolder;
     return(
         <div>
         <div className="container widget-container"
@@ -159,28 +158,32 @@ const Image = ({widget, preview, imageTextChanged, imageNameChanged}) => {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <input onChange={() => imageTextChanged(widget.id, inputElem3.value)}
-                                       ref={node3 => inputElem3= node3}
+                                <label>Image Url</label>
+                                <input onChange={() => imageTextChanged(widget.id, inputHolder3.value)}
+                                       ref={node3 => inputHolder3= node3}
                                        value={widget.text} className="form-control"
-                                /> <br/>
+                                />
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <input onChange={() => imageNameChanged(widget.id, nameElem.value)}
+                                <label>Image Name</label>
+                                <input onChange={() => imageNameChanged(widget.id, nameHolder.value)}
                                        value={widget.name}
-                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                                       ref={node => nameHolder = node} className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-
                                 <h4>Image Preview</h4>
-                            </div></div></div>   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-md-12">
                         <div className="form-group">
@@ -212,12 +215,11 @@ const dispatchToPropsMapperImage = dispatch =>
 const ImageContainer = connect(stateToPropsMapperImage,dispatchToPropsMapperImage)(Image);
 
 const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChanged}) =>{
-    let selectElem2;
-    let inputElem2;
-    let nameElem;
+    let elementHolder2;
+    let inputHolder2;
+    let nameHolder;
     return(
-        <html>
-        <body>
+        <div>
         <div className="container widget-container"
              style={widgetContainerStyle}>
             <div className="col-md-12">
@@ -225,32 +227,33 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-    <textarea onChange={() => listTextChanged(widget.id, inputElem2.value)}
-              ref={node2 => inputElem2= node2}
-              value={widget.text}  className="form-control"/> <br/>
+                                <label>List Items</label>
+                                <textarea onChange={() => listTextChanged(widget.id, inputHolder2.value)}
+                                          ref={node2 => inputHolder2= node2}
+                                          value={widget.text}  className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-
-                                <select onChange={() => listTypeChanged(widget.id, selectElem2.value)}
-                                        ref={node2 => selectElem2=node2}
+                                <label>List Type</label>
+                                <select onChange={() => listTypeChanged(widget.id, elementHolder2.value)}
+                                        ref={node2 => elementHolder2=node2}
                                         value={widget.listType} className="form-control">
                                     <option value="ordered">Ordered List</option>
                                     <option value="unordered">Unordered List</option>
-                                </select> <br/>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-
-                                <input onChange={() => listNameChanged(widget.id, nameElem.value)}
+                                <label>List Name</label>
+                                <input onChange={() => listNameChanged(widget.id, nameHolder.value)}
                                        value={widget.name}
-                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                                       ref={node => nameHolder = node} className="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -265,7 +268,9 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
                         {widget.listType=== "ordered" && <div>{textToOrderedList(widget.text)} </div>}
                         {widget.listType=== "unordered" && <div> {textToUnorderedList(widget.text)}</div>}
                     </div></div>
-            </div></div></body></html>
+            </div>
+        </div>
+        </div>
     )
 };
 
@@ -309,14 +314,11 @@ const textToUnorderedList = (text) =>
     )
 };
 
-
 const Link = ({widget, preview, linkTextChanged, linkNameChanged, linkDispChanged}) => {
-    let inputElem3;
-    let nameElem;
-    let dispName;
-    return(
-        <html>
-        <body>
+    let inputHolder3;
+    let nameHolder;
+    let nameDisplay;
+    return <div>
         <div className="container widget-container"
              style={widgetContainerStyle}>
             <div className="col-md-12">
@@ -324,51 +326,59 @@ const Link = ({widget, preview, linkTextChanged, linkNameChanged, linkDispChange
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <input onChange={() => linkTextChanged(widget.id, inputElem3.value)}
-                                       ref={node3 => inputElem3= node3}
-                                       value={widget.text} className="form-control"
-                                /> <br/>
+                                <label>Link url</label>
+                                <input onChange={() => linkTextChanged(widget.id, inputHolder3.value)}
+                                       ref={node3 => inputHolder3 = node3}
+                                       value={widget.text} className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-                                <input onChange={() => linkDispChanged(widget.id, dispName.value)}
-                                       ref={node3 => dispName= node3}
-                                       value={widget.linkName} className="form-control"
-                                /> <br/>
+                                <label>Link Text</label>
+                                <input onChange={() => linkDispChanged(widget.id, nameDisplay.value)}
+                                       ref={node3 => nameDisplay = node3}
+                                       value={widget.linkName} className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-
-                                <input onChange={() => linkNameChanged(widget.id, nameElem.value)}
+                                <label>Link Name</label>
+                                <input onChange={() => linkNameChanged(widget.id, nameHolder.value)}
                                        value={widget.name}
-                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                                       ref={node => nameHolder = node} className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
                             <div className="form-group">
-
-
                                 <h4>Link Preview</h4>
-                            </div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-md-12">
                         <div className="form-group">
-
                             <a href={widget.text}>{widget.linkName}</a>
+                            {this.urlId}
+                            <iframe width="560"
+                                    height="315"
+                                    src={`https://www.youtube.com/embed/${widget.text.split('=')[1].split('&')[0]}`}
+                                    frameBorder="0"
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen>
+                            </iframe>
                         </div>
-                    </div></div></div>
-        </div></body></html>
-
-
-    )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 };
 
 const stateToPropsMapperLink = state => ({
@@ -388,7 +398,7 @@ const dispatchToPropsMapperLink = dispatch =>
 const LinkContainer = connect(stateToPropsMapperLink,dispatchToPropsMapperLink)(Link);
 
 const Widget = ({widget, preview, dispatch,widgetLength}) => {
-    let selectElement;
+    let element;
     return(
         <div>
         <div hidden={preview}>
@@ -398,7 +408,8 @@ const Widget = ({widget, preview, dispatch,widgetLength}) => {
                     <div className="col-md-12 text-dark pt-2">
                         <div className="row flex-row pb-1">
                             <div className="col-md-3 d-inline-flex">
-                                <h4>{widget.widgetType}</h4></div>
+                                <h4>{widget.widgetType}</h4>
+                            </div>
                             <div className="col-md-9">
 
                                 <div className="d-inline-flex pr-2 float-right">
@@ -407,6 +418,21 @@ const Widget = ({widget, preview, dispatch,widgetLength}) => {
                                     )} className="btn btn-danger"><i className="fa fa-times"/></button>
                                 </div>
 
+                                <div className="d-inline-flex pr-1 float-right my-auto" style={widgetListStyle}>
+                                    <select value={widget.widgetType}
+                                            onChange={e =>
+                                                dispatch({
+                                                    type: 'SELECT_WIDGET_TYPE',
+                                                    id: widget.id,
+                                                    widgetType: element.value
+                                                })} ref={node => element = node}>
+                                        <option>Heading</option>
+                                        <option>Paragraph</option>
+                                        <option>List</option>
+                                        <option>Image</option>
+                                        <option>Link</option>
+                                    </select>
+                                </div>
 
                                 <div className="d-inline-flex pr-2 float-right">
                                     <button onClick={e => (
@@ -423,22 +449,6 @@ const Widget = ({widget, preview, dispatch,widgetLength}) => {
                                         <i className="fa fa-arrow-up"/></button>
                                 </div>
 
-
-                                <div className="d-inline-flex pr-1 float-right my-auto" style={widgetListStyle}>
-                                    <select value={widget.widgetType}
-                                            onChange={e =>
-                                                dispatch({
-                                                    type: 'SELECT_WIDGET_TYPE',
-                                                    id: widget.id,
-                                                    widgetType: selectElement.value
-                                                })} ref={node => selectElement = node}>
-                                        <option>Heading</option>
-                                        <option>Paragraph</option>
-                                        <option>List</option>
-                                        <option>Image</option>
-                                        <option>Link</option>
-                                    </select>
-                                </div>
 
                             </div>
                         </div>
